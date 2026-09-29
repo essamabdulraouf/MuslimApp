@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  The palette. These are the only literal colours in the application: every style below and every page
+  refers to one of these keys, so a brand change happens here and nowhere else.
+-->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+  <!-- Brand -->
+  <Color x:Key="PrimaryColor">#0F5132</Color>
+  <Color x:Key="PrimaryLightColor">#2E7D32</Color>
+  <Color x:Key="PrimaryDeepColor">#0A3A24</Color>
+  <Color x:Key="AccentColor">#C4A24A</Color>
+  <Color x:Key="AccentLightColor">#EBC88B</Color>
+
+  <!-- Neutrals, light appearance -->
+  <Color x:Key="LightBackgroundColor">#F9F5EC</Color>
+  <Color x:Key="LightSurfaceColor">#FFFFFF</Color>
+  <Color x:Key="LightSurfaceAltColor">#F2EDE1</Color>
+  <Color x:Key="LightBorderColor">#E5E0D6</Color>
+  <Color x:Key="LightTextPrimaryColor">#1F2937</Color>
+  <Color x:Key="LightTextSecondaryColor">#6B7280</Color>
+
+  <!-- Neutrals, dark appearance -->
+  <Color x:Key="DarkBackgroundColor">#0F1512</Color>
+  <Color x:Key="DarkSurfaceColor">#18201B</Color>
+  <Color x:Key="DarkSurfaceAltColor">#212B24</Color>
+  <Color x:Key="DarkBorderColor">#2A332C</Color>
+  <Color x:Key="DarkTextPrimaryColor">#ECEFEA</Color>
+  <Color x:Key="DarkTextSecondaryColor">#9CA79E</Color>
+
+  <!-- Semantic. Never the only signal: each is paired with an icon or text. -->
+  <Color x:Key="SuccessColor">#16A34A</Color>
+  <Color x:Key="WarningColor">#F59E0B</Color>
+  <Color x:Key="ErrorColor">#EF4444</Color>
+  <Color x:Key="InfoColor">#3B82F6</Color>
+
+  <Color x:Key="OnPrimaryColor">#FFFFFF</Color>
+  <Color x:Key="OnAccentColor">#1F2937</Color>
+  <Color x:Key="TransparentColor">Transparent</Color>
+
+</ResourceDictionary>

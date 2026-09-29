@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:loc="clr-namespace:MuslimApp.Mobile.Localization"
+             x:Class="MuslimApp.Mobile.App">
+
+  <Application.Resources>
+    <ResourceDictionary>
+
+      <!--
+        Order matters: tokens first, then the styles built from them. Anything that references a token must be
+        merged after the dictionary that defines it.
+      -->
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+        <ResourceDictionary Source="Resources/Styles/Spacing.xaml" />
+        <ResourceDictionary Source="Resources/Styles/Shapes.xaml" />
+        <ResourceDictionary Source="Resources/Styles/Icons.xaml" />
+        <ResourceDictionary Source="Resources/Styles/Typography.xaml" />
+        <ResourceDictionary Source="Resources/Styles/Buttons.xaml" />
+        <ResourceDictionary Source="Resources/Styles/Cards.xaml" />
+        <ResourceDictionary Source="Resources/Styles/Inputs.xaml" />
+        <ResourceDictionary Source="Resources/Styles/Navigation.xaml" />
+        <ResourceDictionary Source="Resources/Styles/Themes.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+
+      <loc:TranslateKeyConverter x:Key="Translate" />
+      <loc:StringNotEmptyConverter x:Key="NotEmpty" />
+      <loc:InvertedBoolConverter x:Key="Invert" />
+      <loc:SelectionGlyphConverter x:Key="SelectionGlyph" />
+      <loc:CountdownConverter x:Key="Countdown" />
+      <loc:ClockTimeConverter x:Key="ClockTime" />
+
+    </ResourceDictionary>
+  </Application.Resources>
+
+</Application>

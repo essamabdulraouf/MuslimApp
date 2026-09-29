@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:AppPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:pages="clr-namespace:MuslimApp.Mobile.Pages"
+               xmlns:common="clr-namespace:MuslimApp.Mobile.Components.Common"
+               xmlns:loc="clr-namespace:MuslimApp.Mobile.Localization"
+               xmlns:vm="clr-namespace:MuslimApp.Mobile.ViewModels"
+               xmlns:items="clr-namespace:MuslimApp.Mobile.ViewModels.Items"
+               x:Class="MuslimApp.Mobile.Pages.Prayer.PrayerPage"
+               x:DataType="vm:PrayerViewModel"
+               Title="{loc:Translate Prayer_Title}">
+
+  <Grid>
+
+    <ActivityIndicator Style="{StaticResource BusyIndicator}"
+                       IsVisible="{Binding IsLoading}"
+                       IsRunning="{Binding IsLoading}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+
+    <common:StateMessageView IsVisible="{Binding IsPermissionRequired}"
+                             Glyph="{StaticResource IconLocationOn}"
+                             TitleText="{loc:Translate State_LocationRequiredTitle}"
+                             BodyText="{Binding MessageKey, Converter={StaticResource Translate}}"
+                             ActionText="{loc:Translate State_SetLocation}"
+                             ActionCommand="{Binding OpenSettingsCommand}" />
+
+    <common:StateMessageView IsVisible="{Binding IsError}"
+                             Glyph="{StaticResource IconError}"
+                             TitleText="{loc:Translate Common_Error}"
+                             ActionText="{loc:Translate Common_Retry}"
+                             ActionCommand="{Binding RefreshCommand}" />
+
+    <ScrollView IsVisible="{Binding IsSuccess}">
+      <VerticalStackLayout Style="{StaticResource PageContent}">
+
+        <!--
+          Day selector. The chevrons are direction-neutral because the page flips with the language: in a
+          right-to-left layout the visually leading chevron is the one that moves to the previous day.
+        -->
+        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="{StaticResource Spacing8}">
+          <Button Grid.Column="0"
+                  Style="{StaticResource IconButton}"
+                  Text="{StaticResource IconChevronBack}"
+                  Command="{Binding PreviousDayCommand}"
+                  SemanticProperties.Description="{loc:Translate Common_Back}" />
+
+          <VerticalStackLayout Grid.Column="1" Spacing="{StaticResource Spacing4}">
+            <Label Style="{StaticResource BodyStrong}" Text="{Binding HijriDateText}" HorizontalTextAlignment="Center" />
+            <Label Style="{StaticResource Small}" Text="{Binding GregorianDateText}" HorizontalTextAlignment="Center" />
+          </VerticalStackLayout>
+
+          <Button Grid.Column="2"
+                  Style="{StaticResource IconButton}"
+                  Text="{StaticResource IconChevronNext}"
+                  Command="{Binding NextDayCommand}"
+                  SemanticProperties.Description="{loc:Translate Common_Next}" />
+        </Grid>
+
+        <Button Style="{StaticResource TextButton}"
+                HorizontalOptions="Center"
+                Text="{loc:Translate Prayer_TodayTimetable}"
+                Command="{Binding TodayCommand}"
+                IsVisible="{Binding IsShowingToday, Converter={StaticResource Invert}}" />
+
+        <!-- Timetable -->
+        <VerticalStackLayout Spacing="{StaticResource Spacing8}" BindableLayout.ItemsSource="{Binding Entries}">
+          <BindableLayout.ItemTemplate>
+            <DataTemplate x:DataType="items:PrayerEntryItem">
+              <Border Style="{StaticResource ListItemCard}">
+                <Border.Triggers>
+                  <DataTrigger TargetType="Border" Binding="{Binding IsNext}" Value="True">
+                    <Setter Property="Stroke" Value="{StaticResource AccentColor}" />
+                    <Setter Property="StrokeThickness" Value="2" />
+                  </DataTrigger>
+                  <DataTrigger TargetType="Border" Binding="{Binding IsPassed}" Value="True">
+                    <Setter Property="Opacity" Value="0.55" />
+                  </DataTrigger>
+                  <!-- Sunrise is a landmark, not a prayer, and is shown more quietly. -->
+                  <DataTrigger TargetType="Border" Binding="{Binding IsObligatory}" Value="False">
+                    <Setter Property="StrokeThickness" Value="0" />
+                  </DataTrigger>
+                </Border.Triggers>
+
+                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="{StaticResource Spacing12}">
+                  <Label Grid.Column="0" Style="{StaticResource Icon}" FontSize="18" Text="{StaticResource IconPrayer}" />
+                  <Label Grid.Column="1" Style="{StaticResource BodyStrong}" Text="{Binding Name}" VerticalTextAlignment="Center" />
+                  <Label Grid.Column="2" Style="{StaticResource TimeValue}" Text="{Binding Time}" VerticalTextAlignment="Center" />
+                </Grid>
+              </Border>
+            </DataTemplate>
+          </BindableLayout.ItemTemplate>
+        </VerticalStackLayout>
+
+        <!-- Islamic midnight: the end of the Isha window, which the timetable rows do not show. -->
+        <Border Style="{StaticResource CardFlat}">
+          <Grid ColumnDefinitions="*,Auto">
+            <Label Grid.Column="0" Style="{StaticResource Caption}" Text="{loc:Translate Prayer_Midnight}" VerticalTextAlignment="Center" />
+            <Label Grid.Column="1" Style="{StaticResource TimeValue}" Text="{Binding MidnightTime}" />
+          </Grid>
+        </Border>
+
+        <!-- What produced these times. Shown so the numbers can be checked, not hidden in settings. -->
+        <Border Style="{StaticResource Card}">
+          <VerticalStackLayout Spacing="{StaticResource Spacing8}">
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="{StaticResource Spacing8}">
+              <Label Grid.Column="0" Style="{StaticResource Icon}" FontSize="18" Text="{StaticResource IconLocationOn}" />
+              <Label Grid.Column="1" Style="{StaticResource Caption}" Text="{Binding LocationName}" VerticalTextAlignment="Center" />
+            </Grid>
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="{StaticResource Spacing8}">
+              <Label Grid.Column="0" Style="{StaticResource Icon}" FontSize="18" Text="{StaticResource IconPrayer}" />
+              <Label Grid.Column="1" Style="{StaticResource Caption}" Text="{Binding MethodName}" VerticalTextAlignment="Center" />
+            </Grid>
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="{StaticResource Spacing8}">
+              <Label Grid.Column="0" Style="{StaticResource Icon}" FontSize="18" Text="{StaticResource IconAbout}" />
+              <Label Grid.Column="1" Style="{StaticResource Caption}" Text="{Binding MadhabName}" VerticalTextAlignment="Center" />
+            </Grid>
+            <Button Style="{StaticResource SecondaryButton}"
+                    Text="{loc:Translate Settings_Title}"
+                    Command="{Binding OpenSettingsCommand}" />
+          </VerticalStackLayout>
+        </Border>
+
+      </VerticalStackLayout>
+    </ScrollView>
+
+  </Grid>
+
+</pages:AppPage>

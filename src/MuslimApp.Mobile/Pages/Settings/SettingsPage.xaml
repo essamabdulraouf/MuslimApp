@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:AppPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:pages="clr-namespace:MuslimApp.Mobile.Pages"
+               xmlns:common="clr-namespace:MuslimApp.Mobile.Components.Common"
+               xmlns:loc="clr-namespace:MuslimApp.Mobile.Localization"
+               xmlns:vm="clr-namespace:MuslimApp.Mobile.ViewModels"
+               xmlns:items="clr-namespace:MuslimApp.Mobile.ViewModels.Items"
+               x:Class="MuslimApp.Mobile.Pages.Settings.SettingsPage"
+               x:DataType="vm:SettingsViewModel"
+               Title="{loc:Translate Settings_Title}">
+
+  <Grid>
+
+    <ActivityIndicator Style="{StaticResource BusyIndicator}"
+                       IsVisible="{Binding IsLoading}"
+                       IsRunning="{Binding IsLoading}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+
+    <common:StateMessageView IsVisible="{Binding IsError}"
+                             Glyph="{StaticResource IconError}"
+                             TitleText="{loc:Translate Common_Error}" />
+
+    <ScrollView IsVisible="{Binding IsSuccess}">
+      <VerticalStackLayout Style="{StaticResource PageContent}">
+
+        <!-- Appearance and language -->
+        <Label Style="{StaticResource SectionHeaderLabel}" Text="{loc:Translate Settings_Appearance}" />
+
+        <Border Style="{StaticResource Card}">
+          <VerticalStackLayout Spacing="{StaticResource Spacing8}">
+
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="{StaticResource Spacing8}">
+              <Label Grid.Column="0" Style="{StaticResource Icon}" FontSize="18" Text="{StaticResource IconLanguage}" />
+              <Label Grid.Column="1" Style="{StaticResource Caption}" Text="{loc:Translate Settings_Language}" VerticalTextAlignment="Center" />
+            </Grid>
+
+            <Grid Style="{StaticResource SettingRow}" ColumnDefinitions="Auto,*">
+              <Grid.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding SetLanguageCommand}" CommandParameter="Arabic" />
+              </Grid.GestureRecognizers>
+              <Label Grid.Column="0" Style="{StaticResource IconPrimary}" Text="{Binding IsArabic, Converter={StaticResource SelectionGlyph}}" />
+              <Label Grid.Column="1" Style="{StaticResource Body}" Text="{loc:Translate Settings_Language_Arabic}" VerticalTextAlignment="Center" />
+            </Grid>
+
+            <Grid Style="{StaticResource SettingRow}" ColumnDefinitions="Auto,*">
+              <Grid.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding SetLanguageCommand}" CommandParameter="English" />
+              </Grid.GestureRecognizers>
+              <Label Grid.Column="0" Style="{StaticResource IconPrimary}" Text="{Binding IsEnglish, Converter={StaticResource SelectionGlyph}}" />
+              <Label Grid.Column="1" Style="{StaticResource Body}" Text="{loc:Translate Settings_Language_English}" VerticalTextAlignment="Center" />
+            </Grid>
+
+            <Label Style="{StaticResource Small}" Text="{loc:Translate Settings_LanguageRestartNote}" />
+
+            <BoxView Style="{StaticResource Divider}" Margin="0,8" />
+
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="{StaticResource Spacing8}">
+              <Label Grid.Column="0" Style="{StaticResource Icon}" FontSize="18" Text="{StaticResource IconNight}" />
+              <Label Grid.Column="1" Style="{StaticResource Caption}" Text="{loc:Translate Settings_Theme}" VerticalTextAlignment="Center" />
+            </Grid>
+
+            <Grid Style="{StaticResource SettingRow}" ColumnDefinitions="Auto,*">
+              <Grid.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding SetThemeCommand}" CommandParameter="System" />
+              </Grid.GestureRecognizers>
+              <Label Grid.Column="0" Style="{StaticResource IconPrimary}" Text="{Binding IsThemeSystem, Converter={StaticResource SelectionGlyph}}" />
+              <Label Grid.Column="1" Style="{StaticResource Body}" Text="{loc:Translate Settings_Theme_System}" VerticalTextAlignment="Center" />
+            </Grid>
+
+            <Grid Style="{StaticResource SettingRow}" ColumnDefinitions="Auto,*">
+              <Grid.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding SetThemeCommand}" CommandParameter="Light" />
+              </Grid.GestureRecognizers>
+              <Label Grid.Column="0" Style="{StaticResource IconPrimary}" Text="{Binding IsThemeLight, Converter={StaticResource SelectionGlyph}}" />
+              <Label Grid.Column="1" Style="{StaticResource Body}" Text="{loc:Translate Settings_Theme_Light}" VerticalTextAlignment="Center" />
+            </Grid>
+
+            <Grid Style="{StaticResource SettingRow}" ColumnDefinitions="Auto,*">
+              <Grid.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding SetThemeCommand}" CommandParameter="Dark" />
+              </Grid.GestureRecognizers>
+              <Label Grid.Column="0" Style="{StaticResource IconPrimary}" Text="{Binding IsThemeDark, Converter={StaticResource SelectionGlyph}}" />
+              <Label Grid.Column="1" Style="{StaticResource Body}" Text="{loc:Translate Settings_Theme_Dark}" VerticalTextAlignment="Center" />
+            </Grid>
+
+          </VerticalStackLayout>
+        </Border>
+
+        <!-- Prayer settings -->
+        <Label Style="{StaticResource SectionHeaderLabel}" Text="{loc:Translate Settings_PrayerSection}" />
+
+        <Border Style="{StaticResource ListItemCard}">
+          <Border.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding OpenLocationCommand}" />
+          </Border.GestureRecognizers>
+          <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="{StaticResource Spacing12}">
+            <Label Grid.Column="0" Style="{StaticResource Icon}" FontSize="18" Text="{StaticResource IconLocationOn}" />
+            <VerticalStackLayout Grid.Column="1" Spacing="{StaticResource Spacing4}">
+              <Label Style="{StaticResource BodyStrong}" Text="{loc:Translate Settings_Location}" />
+              <Label Style="{StaticResource Small}" Text="{Binding LocationName}" />
+            </VerticalStackLayout>
+            <Label Grid.Column="2" Style="{StaticResource Icon}" FontSize="18" Text="{StaticResource IconChevronNext}" />
+          </Grid>
+        </Border>
+
+        <Border Style="{StaticResource Card}">
+          <VerticalStackLayout Spacing="{StaticResource Spacing8}">
+            <Label Style="{StaticResource Caption}" Text="{loc:Translate Settings_CalculationMethod}" />
+
+            <VerticalStackLayout Spacing="{StaticResource Spacing4}" BindableLayout.ItemsSource="{Binding Methods}">
+              <BindableLayout.ItemTemplate>
+                <DataTemplate x:DataType="items:MethodOptionItem">
+                  <Grid Style="{StaticResource SettingRow}" ColumnDefinitions="Auto,*">
+                    <Grid.GestureRecognizers>
+                      <TapGestureRecognizer
+                          Command="{Binding Source={RelativeSource AncestorType={x:Type vm:SettingsViewModel}}, Path=SelectMethodCommand}"
+                          CommandParameter="{Binding .}" />
+                    </Grid.GestureRecognizers>
+                    <Label Grid.Column="0" Style="{StaticResource IconPrimary}" Text="{Binding IsSelected, Converter={StaticResource SelectionGlyph}}" VerticalOptions="Center" />
+                    <VerticalStackLayout Grid.Column="1" Spacing="{StaticResource Spacing4}">
+                      <Label Style="{StaticResource Body}" Text="{Binding Name}" />
+                      <Label Style="{StaticResource Small}" Text="{Binding Summary}" />
+                    </VerticalStackLayout>
+                  </Grid>
+                </DataTemplate>
+              </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+
+            <BoxView Style="{StaticResource Divider}" Margin="0,8" />
+
+            <Label Style="{StaticResource Caption}" Text="{loc:Translate Settings_Madhab}" />
+
+            <Grid Style="{StaticResource SettingRow}" ColumnDefinitions="Auto,*">
+              <Grid.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding SetMadhabCommand}" CommandParameter="Shafi" />
+              </Grid.GestureRecognizers>
+              <Label Grid.Column="0" Style="{StaticResource IconPrimary}" Text="{Binding IsShafi, Converter={StaticResource SelectionGlyph}}" />
+              <Label Grid.Column="1" Style="{StaticResource Body}" Text="{loc:Translate Madhab_Shafi}" VerticalTextAlignment="Center" />
+            </Grid>
+
+            <Grid Style="{StaticResource SettingRow}" ColumnDefinitions="Auto,*">
+              <Grid.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding SetMadhabCommand}" CommandParameter="Hanafi" />
+              </Grid.GestureRecognizers>
+              <Label Grid.Column="0" Style="{StaticResource IconPrimary}" Text="{Binding IsHanafi, Converter={StaticResource SelectionGlyph}}" />
+              <Label Grid.Column="1" Style="{StaticResource Body}" Text="{loc:Translate Madhab_Hanafi}" VerticalTextAlignment="Center" />
+            </Grid>
+          </VerticalStackLayout>
+        </Border>
+
+        <!-- Privacy. Stated on the screen because it is a product promise, not a policy page. -->
+        <Label Style="{StaticResource SectionHeaderLabel}" Text="{loc:Translate Settings_Privacy}" />
+        <Border Style="{StaticResource CardFlat}">
+          <Grid ColumnDefinitions="Auto,*" ColumnSpacing="{StaticResource Spacing12}">
+            <Label Grid.Column="0" Style="{StaticResource IconPrimary}" FontSize="20" Text="{StaticResource IconCheck}" />
+            <Label Grid.Column="1" Style="{StaticResource Caption}" Text="{loc:Translate Settings_PrivacyNote}" />
+          </Grid>
+        </Border>
+
+      </VerticalStackLayout>
+    </ScrollView>
+
+  </Grid>
+
+</pages:AppPage>

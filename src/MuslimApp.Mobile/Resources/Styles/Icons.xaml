@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  Material Symbols code points, named once so no page contains a bare glyph escape. Changing an icon is
+  then a single edit here.
+-->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+  <x:String x:Key="IconHome">&#xe88a;</x:String>
+  <x:String x:Key="IconPrayer">&#xe8b5;</x:String>
+  <x:String x:Key="IconAzkar">&#xea19;</x:String>
+  <x:String x:Key="IconQuran">&#xe865;</x:String>
+  <x:String x:Key="IconQibla">&#xe87a;</x:String>
+  <x:String x:Key="IconMore">&#xe5d3;</x:String>
+
+  <x:String x:Key="IconSettings">&#xe8b8;</x:String>
+  <x:String x:Key="IconNotifications">&#xe7f4;</x:String>
+  <x:String x:Key="IconAdhan">&#xe050;</x:String>
+  <x:String x:Key="IconTasbih">&#xea78;</x:String>
+  <x:String x:Key="IconAbout">&#xe88e;</x:String>
+  <x:String x:Key="IconHelp">&#xe8fd;</x:String>
+
+  <x:String x:Key="IconMyLocation">&#xe55c;</x:String>
+  <x:String x:Key="IconLocationOn">&#xe0c8;</x:String>
+  <x:String x:Key="IconLocationCity">&#xe7f1;</x:String>
+  <x:String x:Key="IconLanguage">&#xe894;</x:String>
+  <x:String x:Key="IconCalendar">&#xe935;</x:String>
+  <x:String x:Key="IconRefresh">&#xe5d5;</x:String>
+  <x:String x:Key="IconError">&#xe001;</x:String>
+  <x:String x:Key="IconCheck">&#xe86c;</x:String>
+  <x:String x:Key="IconSunrise">&#xe430;</x:String>
+  <x:String x:Key="IconNight">&#xe51c;</x:String>
+  <x:String x:Key="IconChevronNext">&#xe5cc;</x:String>
+  <x:String x:Key="IconChevronBack">&#xe5cb;</x:String>
+  <x:String x:Key="IconRadioSelected">&#xe837;</x:String>
+  <x:String x:Key="IconRadioEmpty">&#xe836;</x:String>
+  <x:String x:Key="IconConstruction">&#xea3c;</x:String>
+
+</ResourceDictionary>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="AppName" xml:space="preserve"><value>MuslimApp</value></data>
+
+  <data name="Tab_Home" xml:space="preserve"><value>Home</value></data>
+  <data name="Tab_Prayer" xml:space="preserve"><value>Prayer</value></data>
+  <data name="Tab_Azkar" xml:space="preserve"><value>Azkar</value></data>
+  <data name="Tab_Quran" xml:space="preserve"><value>Quran</value></data>
+  <data name="Tab_Qibla" xml:space="preserve"><value>Qibla</value></data>
+  <data name="Tab_More" xml:space="preserve"><value>More</value></data>
+
+  <data name="Home_Greeting" xml:space="preserve"><value>Assalamu alaykum</value></data>
+  <data name="Home_GreetingSubtitle" xml:space="preserve"><value>May your day be blessed</value></data>
+  <data name="Home_NextPrayer" xml:space="preserve"><value>Next prayer</value></data>
+  <data name="Home_TodayPrayers" xml:space="preserve"><value>Today's times</value></data>
+  <data name="Home_ViewAll" xml:space="preserve"><value>View all</value></data>
+
+  <data name="Prayer_Title" xml:space="preserve"><value>Prayer</value></data>
+  <data name="Prayer_Fajr" xml:space="preserve"><value>Fajr</value></data>
+  <data name="Prayer_Sunrise" xml:space="preserve"><value>Sunrise</value></data>
+  <data name="Prayer_Dhuhr" xml:space="preserve"><value>Dhuhr</value></data>
+  <data name="Prayer_Asr" xml:space="preserve"><value>Asr</value></data>
+  <data name="Prayer_Maghrib" xml:space="preserve"><value>Maghrib</value></data>
+  <data name="Prayer_Isha" xml:space="preserve"><value>Isha</value></data>
+  <data name="Prayer_Midnight" xml:space="preserve"><value>Islamic midnight</value></data>
+  <data name="Prayer_Remaining" xml:space="preserve"><value>Remaining</value></data>
+  <data name="Prayer_Passed" xml:space="preserve"><value>Passed</value></data>
+  <data name="Prayer_Tomorrow" xml:space="preserve"><value>Tomorrow</value></data>
+  <data name="Prayer_TodayTimetable" xml:space="preserve"><value>Full timetable for today</value></data>
+
+  <data name="CalculationMethod_UmmAlQura" xml:space="preserve"><value>Umm al-Qura (Makkah)</value></data>
+  <data name="CalculationMethod_MuslimWorldLeague" xml:space="preserve"><value>Muslim World League</value></data>
+  <data name="CalculationMethod_Egyptian" xml:space="preserve"><value>Egyptian General Survey Authority</value></data>
+  <data name="CalculationMethod_Karachi" xml:space="preserve"><value>University of Islamic Sciences, Karachi</value></data>
+  <data name="CalculationMethod_Isna" xml:space="preserve"><value>Islamic Society of North America</value></data>
+  <data name="CalculationMethod_Gulf" xml:space="preserve"><value>Gulf Region</value></data>
+  <data name="CalculationMethod_Custom" xml:space="preserve"><value>Custom</value></data>
+
+  <data name="Madhab_Shafi" xml:space="preserve"><value>Shafi'i, Maliki, Hanbali</value></data>
+  <data name="Madhab_Hanafi" xml:space="preserve"><value>Hanafi</value></data>
+
+  <data name="Onboarding_WelcomeTitle" xml:space="preserve"><value>Welcome</value></data>
+  <data name="Onboarding_WelcomeBody" xml:space="preserve"><value>Your companion for daily worship: prayer times, azkar, Quran and qibla. Works offline, with no ads and no account.</value></data>
+  <data name="Onboarding_Start" xml:space="preserve"><value>Get started</value></data>
+  <data name="Onboarding_LocationTitle" xml:space="preserve"><value>Set your location</value></data>
+  <data name="Onboarding_LocationBody" xml:space="preserve"><value>Your location is used to calculate prayer times and the qibla direction. It stays on your device and is never sent anywhere.</value></data>
+  <data name="Onboarding_UseMyLocation" xml:space="preserve"><value>Use my current location</value></data>
+  <data name="Onboarding_ChooseCity" xml:space="preserve"><value>Choose a city manually</value></data>
+  <data name="Onboarding_MethodTitle" xml:space="preserve"><value>Calculation method</value></data>
+  <data name="Onboarding_MethodBody" xml:space="preserve"><value>Pick the convention used in your region. You can change it later in settings.</value></data>
+  <data name="Onboarding_NotificationsTitle" xml:space="preserve"><value>Never miss a prayer</value></data>
+  <data name="Onboarding_NotificationsBody" xml:space="preserve"><value>Enable notifications to be reminded of prayer times and the morning and evening azkar.</value></data>
+  <data name="Onboarding_EnableNotifications" xml:space="preserve"><value>Enable notifications</value></data>
+  <data name="Onboarding_ReadyTitle" xml:space="preserve"><value>You're all set</value></data>
+  <data name="Onboarding_ReadyBody" xml:space="preserve"><value>May Allah accept your worship and bless your time.</value></data>
+  <data name="Onboarding_Enter" xml:space="preserve"><value>Enter the app</value></data>
+
+  <data name="Common_Skip" xml:space="preserve"><value>Skip</value></data>
+  <data name="Common_Next" xml:space="preserve"><value>Continue</value></data>
+  <data name="Common_Back" xml:space="preserve"><value>Back</value></data>
+  <data name="Common_Retry" xml:space="preserve"><value>Try again</value></data>
+  <data name="Common_Loading" xml:space="preserve"><value>Loading</value></data>
+  <data name="Common_Error" xml:space="preserve"><value>Something went wrong</value></data>
+  <data name="Common_Offline" xml:space="preserve"><value>No internet connection</value></data>
+  <data name="Common_Empty" xml:space="preserve"><value>Nothing to show yet</value></data>
+  <data name="Common_Refresh" xml:space="preserve"><value>Refresh</value></data>
+
+  <data name="State_LocationRequiredTitle" xml:space="preserve"><value>Location not set</value></data>
+  <data name="State_LocationRequiredBody" xml:space="preserve"><value>Set your location to calculate accurate prayer times.</value></data>
+  <data name="State_LocationDeniedTitle" xml:space="preserve"><value>Location access denied</value></data>
+  <data name="State_LocationDeniedBody" xml:space="preserve"><value>You can choose your city manually instead.</value></data>
+  <data name="State_SetLocation" xml:space="preserve"><value>Set location</value></data>
+  <data name="State_DatabaseErrorTitle" xml:space="preserve"><value>The app could not start</value></data>
+  <data name="State_DatabaseErrorBody" xml:space="preserve"><value>There was a problem with the local database. Restart the app, and reinstall it if the problem continues.</value></data>
+
+  <data name="Settings_Title" xml:space="preserve"><value>Settings</value></data>
+  <data name="Settings_Appearance" xml:space="preserve"><value>Appearance and language</value></data>
+  <data name="Settings_Language" xml:space="preserve"><value>Language</value></data>
+  <data name="Settings_Language_Arabic" xml:space="preserve"><value>العربية</value></data>
+  <data name="Settings_Language_English" xml:space="preserve"><value>English</value></data>
+  <data name="Settings_LanguageRestartNote" xml:space="preserve"><value>Text updates immediately; some screens may need to be reopened.</value></data>
+  <data name="Settings_Theme" xml:space="preserve"><value>Theme</value></data>
+  <data name="Settings_Theme_System" xml:space="preserve"><value>System</value></data>
+  <data name="Settings_Theme_Light" xml:space="preserve"><value>Light</value></data>
+  <data name="Settings_Theme_Dark" xml:space="preserve"><value>Dark</value></data>
+  <data name="Settings_PrayerSection" xml:space="preserve"><value>Prayer settings</value></data>
+  <data name="Settings_Location" xml:space="preserve"><value>Current location</value></data>
+  <data name="Settings_LocationUnset" xml:space="preserve"><value>Not set</value></data>
+  <data name="Settings_UpdateLocation" xml:space="preserve"><value>Update location</value></data>
+  <data name="Settings_CalculationMethod" xml:space="preserve"><value>Calculation method</value></data>
+  <data name="Settings_Madhab" xml:space="preserve"><value>Asr juristic method</value></data>
+  <data name="Settings_Privacy" xml:space="preserve"><value>Privacy</value></data>
+  <data name="Settings_PrivacyNote" xml:space="preserve"><value>This app collects nothing about you. Everything stays on your device.</value></data>
+
+  <data name="More_Title" xml:space="preserve"><value>More</value></data>
+  <data name="More_Tasbih" xml:space="preserve"><value>Tasbih</value></data>
+  <data name="More_Notifications" xml:space="preserve"><value>Notifications</value></data>
+  <data name="More_Adhan" xml:space="preserve"><value>Adhan sound</value></data>
+  <data name="More_Settings" xml:space="preserve"><value>Settings</value></data>
+  <data name="More_About" xml:space="preserve"><value>About</value></data>
+  <data name="More_Help" xml:space="preserve"><value>Help and feedback</value></data>
+
+  <data name="Azkar_Title" xml:space="preserve"><value>Azkar</value></data>
+  <data name="Quran_Title" xml:space="preserve"><value>The Noble Quran</value></data>
+  <data name="Qibla_Title" xml:space="preserve"><value>Qibla</value></data>
+  <data name="Tasbih_Title" xml:space="preserve"><value>Tasbih</value></data>
+
+  <data name="ComingSoon_Title" xml:space="preserve"><value>In development</value></data>
+  <data name="ComingSoon_Azkar" xml:space="preserve"><value>Azkar with their sources and gradings arrive in the next update.</value></data>
+  <data name="ComingSoon_Quran" xml:space="preserve"><value>Quran reading and bookmarks arrive in the next update.</value></data>
+  <data name="ComingSoon_Qibla" xml:space="preserve"><value>The qibla compass and its calibration arrive in the next update.</value></data>
+  <data name="ComingSoon_Tasbih" xml:space="preserve"><value>The tasbih counter arrives in the next update.</value></data>
+
+</root>

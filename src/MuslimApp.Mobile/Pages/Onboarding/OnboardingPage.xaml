@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:AppPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:pages="clr-namespace:MuslimApp.Mobile.Pages"
+               xmlns:loc="clr-namespace:MuslimApp.Mobile.Localization"
+               xmlns:vm="clr-namespace:MuslimApp.Mobile.ViewModels"
+               xmlns:items="clr-namespace:MuslimApp.Mobile.ViewModels.Items"
+               x:Class="MuslimApp.Mobile.Pages.Onboarding.OnboardingPage"
+               x:DataType="vm:OnboardingViewModel"
+               Shell.NavBarIsVisible="False"
+               Shell.TabBarIsVisible="False">
+
+  <Grid RowDefinitions="Auto,*">
+
+    <Button Grid.Row="0"
+            Style="{StaticResource IconButton}"
+            Margin="8,8,0,0"
+            HorizontalOptions="Start"
+            Text="{StaticResource IconChevronBack}"
+            IsVisible="{Binding CanGoBack}"
+            Command="{Binding BackCommand}"
+            SemanticProperties.Description="{loc:Translate Common_Back}" />
+
+    <!-- Welcome -->
+    <VerticalStackLayout Grid.Row="1"
+                         Padding="24"
+                         Spacing="{StaticResource Spacing16}"
+                         VerticalOptions="Center"
+                         IsVisible="{Binding IsWelcome}">
+      <Label Style="{StaticResource Icon}" FontSize="64" Text="{StaticResource IconPrayer}" HorizontalOptions="Center" />
+      <Label Style="{StaticResource H1}" Text="{loc:Translate Onboarding_WelcomeTitle}" HorizontalTextAlignment="Center" />
+      <Label Style="{StaticResource Body}" Text="{loc:Translate Onboarding_WelcomeBody}" HorizontalTextAlignment="Center" />
+      <Button Style="{StaticResource PrimaryButton}" Margin="0,16,0,0" Text="{loc:Translate Onboarding_Start}" Command="{Binding StartCommand}" />
+    </VerticalStackLayout>
+
+    <!-- Location -->
+    <VerticalStackLayout Grid.Row="1"
+                         Padding="24"
+                         Spacing="{StaticResource Spacing16}"
+                         VerticalOptions="Center"
+                         IsVisible="{Binding IsLocation}">
+      <Label Style="{StaticResource Icon}" FontSize="64" Text="{StaticResource IconMyLocation}" HorizontalOptions="Center" />
+      <Label Style="{StaticResource H2}" Text="{loc:Translate Onboarding_LocationTitle}" HorizontalTextAlignment="Center" />
+      <Label Style="{StaticResource Caption}" Text="{loc:Translate Onboarding_LocationBody}" HorizontalTextAlignment="Center" />
+
+      <ActivityIndicator Style="{StaticResource BusyIndicator}"
+                         IsVisible="{Binding IsWorking}"
+                         IsRunning="{Binding IsWorking}"
+                         HorizontalOptions="Center" />
+
+      <Button Style="{StaticResource PrimaryButton}"
+              Text="{loc:Translate Onboarding_UseMyLocation}"
+              Command="{Binding UseMyLocationCommand}"
+              IsEnabled="{Binding IsWorking, Converter={StaticResource Invert}}" />
+      <Button Style="{StaticResource SecondaryButton}"
+              Text="{loc:Translate Onboarding_ChooseCity}"
+              Command="{Binding ChooseCityCommand}" />
+      <Button Style="{StaticResource TextButton}"
+              Text="{loc:Translate Common_Skip}"
+              Command="{Binding SkipLocationCommand}" />
+    </VerticalStackLayout>
+
+    <!-- City picker -->
+    <Grid Grid.Row="1"
+          RowDefinitions="Auto,Auto,Auto,*"
+          Padding="16"
+          RowSpacing="{StaticResource Spacing12}"
+          IsVisible="{Binding IsCityPicker}">
+
+      <Label Grid.Row="0" Style="{StaticResource H3}" Text="{loc:Translate Onboarding_ChooseCity}" />
+
+      <Label Grid.Row="1"
+             Style="{StaticResource ErrorLabel}"
+             HorizontalTextAlignment="Start"
+             IsVisible="{Binding HasLocationMessage}"
+             Text="{Binding LocationMessageKey, Converter={StaticResource Translate}}" />
+
+      <SearchBar Grid.Row="2"
+                 Text="{Binding CitySearch}"
+                 Placeholder="{loc:Translate Onboarding_ChooseCity}"
+                 FontFamily="Tajawal" />
+
+      <CollectionView Grid.Row="3" ItemsSource="{Binding Cities}" SelectionMode="None">
+        <CollectionView.ItemTemplate>
+          <DataTemplate x:DataType="items:CityItem">
+            <Border Style="{StaticResource ListItemCard}" Margin="0,0,0,8">
+              <Border.GestureRecognizers>
+                <TapGestureRecognizer
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:OnboardingViewModel}}, Path=SelectCityCommand}"
+                    CommandParameter="{Binding .}" />
+              </Border.GestureRecognizers>
+              <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="{StaticResource Spacing12}">
+                <Label Grid.Column="0" Style="{StaticResource Icon}" FontSize="18" Text="{StaticResource IconLocationCity}" />
+                <Label Grid.Column="1" Style="{StaticResource BodyStrong}" Text="{Binding Name}" VerticalTextAlignment="Center" />
+                <Label Grid.Column="2" Style="{StaticResource Small}" Text="{Binding Alternate}" VerticalTextAlignment="Center" />
+              </Grid>
+            </Border>
+          </DataTemplate>
+        </CollectionView.ItemTemplate>
+      </CollectionView>
+    </Grid>
+
+    <!-- Calculation method -->
+    <Grid Grid.Row="1"
+          RowDefinitions="Auto,Auto,Auto,*,Auto"
+          Padding="16"
+          RowSpacing="{StaticResource Spacing12}"
+          IsVisible="{Binding IsMethod}">
+
+      <Label Grid.Row="0" Style="{StaticResource H3}" Text="{loc:Translate Onboarding_MethodTitle}" />
+      <Label Grid.Row="1" Style="{StaticResource Caption}" Text="{loc:Translate Onboarding_MethodBody}" />
+
+      <Border Grid.Row="2" Style="{StaticResource Chip}" HorizontalOptions="Start" IsVisible="{Binding HasSelectedLocation}">
+        <HorizontalStackLayout Spacing="{StaticResource Spacing4}">
+          <Label Style="{StaticResource Icon}" FontSize="16" Text="{StaticResource IconLocationOn}" />
+          <Label Style="{StaticResource Small}" Text="{Binding SelectedLocationName}" VerticalTextAlignment="Center" />
+        </HorizontalStackLayout>
+      </Border>
+
+      <CollectionView Grid.Row="3" ItemsSource="{Binding Methods}" SelectionMode="None">
+        <CollectionView.ItemTemplate>
+          <DataTemplate x:DataType="items:MethodOptionItem">
+            <Border Style="{StaticResource ListItemCard}" Margin="0,0,0,8">
+              <Border.GestureRecognizers>
+                <TapGestureRecognizer
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:OnboardingViewModel}}, Path=SelectMethodCommand}"
+                    CommandParameter="{Binding .}" />
+              </Border.GestureRecognizers>
+              <Grid ColumnDefinitions="Auto,*" ColumnSpacing="{StaticResource Spacing12}">
+                <Label Grid.Column="0"
+                       Style="{StaticResource IconPrimary}"
+                       Text="{Binding IsSelected, Converter={StaticResource SelectionGlyph}}"
+                       VerticalOptions="Center" />
+                <VerticalStackLayout Grid.Column="1" Spacing="{StaticResource Spacing4}">
+                  <Label Style="{StaticResource BodyStrong}" Text="{Binding Name}" />
+                  <Label Style="{StaticResource Small}" Text="{Binding Summary}" />
+                </VerticalStackLayout>
+              </Grid>
+            </Border>
+          </DataTemplate>
+        </CollectionView.ItemTemplate>
+      </CollectionView>
+
+      <Button Grid.Row="4"
+              Style="{StaticResource PrimaryButton}"
+              Text="{loc:Translate Common_Next}"
+              Command="{Binding ContinueFromMethodCommand}" />
+    </Grid>
+
+    <!-- Notifications -->
+    <VerticalStackLayout Grid.Row="1"
+                         Padding="24"
+                         Spacing="{StaticResource Spacing16}"
+                         VerticalOptions="Center"
+                         IsVisible="{Binding IsNotifications}">
+      <Label Style="{StaticResource Icon}" FontSize="64" Text="{StaticResource IconNotifications}" HorizontalOptions="Center" />
+      <Label Style="{StaticResource H2}" Text="{loc:Translate Onboarding_NotificationsTitle}" HorizontalTextAlignment="Center" />
+      <Label Style="{StaticResource Caption}" Text="{loc:Translate Onboarding_NotificationsBody}" HorizontalTextAlignment="Center" />
+      <Button Style="{StaticResource PrimaryButton}"
+              Text="{loc:Translate Onboarding_EnableNotifications}"
+              Command="{Binding EnableNotificationsCommand}"
+              IsEnabled="{Binding IsWorking, Converter={StaticResource Invert}}" />
+      <Button Style="{StaticResource TextButton}" Text="{loc:Translate Common_Skip}" Command="{Binding SkipNotificationsCommand}" />
+    </VerticalStackLayout>
+
+    <!-- Ready -->
+    <VerticalStackLayout Grid.Row="1"
+                         Padding="24"
+                         Spacing="{StaticResource Spacing16}"
+                         VerticalOptions="Center"
+                         IsVisible="{Binding IsReady}">
+      <Label Style="{StaticResource IconPrimary}" FontSize="64" Text="{StaticResource IconCheck}" HorizontalOptions="Center" />
+      <Label Style="{StaticResource H2}" Text="{loc:Translate Onboarding_ReadyTitle}" HorizontalTextAlignment="Center" />
+      <Label Style="{StaticResource Caption}" Text="{loc:Translate Onboarding_ReadyBody}" HorizontalTextAlignment="Center" />
+      <Button Style="{StaticResource PrimaryButton}" Text="{loc:Translate Onboarding_Enter}" Command="{Binding FinishCommand}" />
+    </VerticalStackLayout>
+
+  </Grid>
+
+</pages:AppPage>

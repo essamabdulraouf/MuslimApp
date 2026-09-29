@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+  <Style x:Key="Card" TargetType="Border">
+    <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightSurfaceColor}, Dark={StaticResource DarkSurfaceColor}}" />
+    <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource LightBorderColor}, Dark={StaticResource DarkBorderColor}}" />
+    <Setter Property="StrokeThickness" Value="1" />
+    <Setter Property="StrokeShape" Value="RoundRectangle 16" />
+    <Setter Property="Padding" Value="{StaticResource CardPadding}" />
+  </Style>
+
+  <Style x:Key="CardFlat" TargetType="Border" BasedOn="{StaticResource Card}">
+    <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightSurfaceAltColor}, Dark={StaticResource DarkSurfaceAltColor}}" />
+    <Setter Property="StrokeThickness" Value="0" />
+  </Style>
+
+  <!-- The next-prayer card: the one element on the home screen that should draw the eye first. -->
+  <Style x:Key="FeatureCard" TargetType="Border">
+    <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource PrimaryColor}, Dark={StaticResource PrimaryDeepColor}}" />
+    <Setter Property="StrokeThickness" Value="0" />
+    <Setter Property="StrokeShape" Value="RoundRectangle 20" />
+    <Setter Property="Padding" Value="20" />
+  </Style>
+
+  <Style x:Key="ListItemCard" TargetType="Border" BasedOn="{StaticResource Card}">
+    <Setter Property="StrokeShape" Value="RoundRectangle 12" />
+    <Setter Property="Padding" Value="{StaticResource ListItemPadding}" />
+    <Setter Property="MinimumHeightRequest" Value="{StaticResource MinimumTouchTarget}" />
+  </Style>
+
+  <!-- Marks the prayer whose window is currently open. -->
+  <Style x:Key="ListItemCardHighlighted" TargetType="Border" BasedOn="{StaticResource ListItemCard}">
+    <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource AccentLightColor}, Dark={StaticResource DarkSurfaceAltColor}}" />
+    <Setter Property="Stroke" Value="{StaticResource AccentColor}" />
+  </Style>
+
+  <Style x:Key="Chip" TargetType="Border">
+    <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightSurfaceAltColor}, Dark={StaticResource DarkSurfaceAltColor}}" />
+    <Setter Property="StrokeThickness" Value="0" />
+    <Setter Property="StrokeShape" Value="RoundRectangle 8" />
+    <Setter Property="Padding" Value="10,4" />
+  </Style>
+
+  <Style x:Key="Divider" TargetType="BoxView">
+    <Setter Property="HeightRequest" Value="1" />
+    <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource LightBorderColor}, Dark={StaticResource DarkBorderColor}}" />
+  </Style>
+
+</ResourceDictionary>

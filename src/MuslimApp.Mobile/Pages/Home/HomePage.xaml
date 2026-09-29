@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:AppPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:pages="clr-namespace:MuslimApp.Mobile.Pages"
+               xmlns:common="clr-namespace:MuslimApp.Mobile.Components.Common"
+               xmlns:loc="clr-namespace:MuslimApp.Mobile.Localization"
+               xmlns:vm="clr-namespace:MuslimApp.Mobile.ViewModels"
+               xmlns:items="clr-namespace:MuslimApp.Mobile.ViewModels.Items"
+               x:Class="MuslimApp.Mobile.Pages.Home.HomePage"
+               x:DataType="vm:HomeViewModel"
+               Shell.NavBarIsVisible="False">
+
+  <Grid>
+
+    <ActivityIndicator Style="{StaticResource BusyIndicator}"
+                       IsVisible="{Binding IsLoading}"
+                       IsRunning="{Binding IsLoading}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+
+    <common:StateMessageView IsVisible="{Binding IsPermissionRequired}"
+                             Glyph="{StaticResource IconLocationOn}"
+                             TitleText="{loc:Translate State_LocationRequiredTitle}"
+                             BodyText="{Binding MessageKey, Converter={StaticResource Translate}}"
+                             ActionText="{loc:Translate State_SetLocation}"
+                             ActionCommand="{Binding SetLocationCommand}" />
+
+    <common:StateMessageView IsVisible="{Binding IsError}"
+                             Glyph="{StaticResource IconError}"
+                             TitleText="{loc:Translate Common_Error}"
+                             ActionText="{loc:Translate Common_Retry}"
+                             ActionCommand="{Binding RefreshCommand}" />
+
+    <ScrollView IsVisible="{Binding IsSuccess}">
+      <VerticalStackLayout Style="{StaticResource PageContent}">
+
+        <!-- Greeting and date -->
+        <VerticalStackLayout Spacing="{StaticResource Spacing4}">
+          <Label Style="{StaticResource H2}" Text="{loc:Translate Home_Greeting}" />
+          <Label Style="{StaticResource Caption}" Text="{loc:Translate Home_GreetingSubtitle}" />
+        </VerticalStackLayout>
+
+        <HorizontalStackLayout Spacing="{StaticResource Spacing8}">
+          <Border Style="{StaticResource Chip}" IsVisible="{Binding LocationName, Converter={StaticResource NotEmpty}}">
+            <HorizontalStackLayout Spacing="{StaticResource Spacing4}">
+              <Label Style="{StaticResource Icon}" FontSize="16" Text="{StaticResource IconLocationOn}" />
+              <Label Style="{StaticResource Small}" Text="{Binding LocationName}" VerticalTextAlignment="Center" />
+            </HorizontalStackLayout>
+          </Border>
+          <Border Style="{StaticResource Chip}">
+            <Label Style="{StaticResource Small}" Text="{Binding HijriDateText}" />
+          </Border>
+          <Border Style="{StaticResource Chip}">
+            <Label Style="{StaticResource Small}" Text="{Binding GregorianDateText}" />
+          </Border>
+        </HorizontalStackLayout>
+
+        <!-- Next prayer -->
+        <Border Style="{StaticResource FeatureCard}">
+          <VerticalStackLayout Spacing="{StaticResource Spacing4}">
+            <Label Style="{StaticResource OnPrimaryCaption}" Text="{loc:Translate Home_NextPrayer}" />
+            <Label Style="{StaticResource OnPrimaryLabel}" FontFamily="TajawalBold" FontSize="22" Text="{Binding NextPrayerName}" />
+            <Label Style="{StaticResource OnPrimaryTimeDisplay}" Text="{Binding Countdown}" />
+
+            <HorizontalStackLayout Spacing="{StaticResource Spacing8}">
+              <Label Style="{StaticResource OnPrimaryCaption}" Text="{Binding NextPrayerTime}" />
+              <Label Style="{StaticResource OnPrimaryCaption}"
+                     Text="{loc:Translate Prayer_Tomorrow}"
+                     IsVisible="{Binding IsNextPrayerTomorrow}" />
+            </HorizontalStackLayout>
+          </VerticalStackLayout>
+        </Border>
+
+        <!-- Today's timetable -->
+        <Grid ColumnDefinitions="*,Auto">
+          <Label Grid.Column="0" Style="{StaticResource SectionHeaderLabel}" Text="{loc:Translate Home_TodayPrayers}" />
+          <Button Grid.Column="1"
+                  Style="{StaticResource TextButton}"
+                  Text="{loc:Translate Home_ViewAll}"
+                  Command="{Binding OpenTimetableCommand}" />
+        </Grid>
+
+        <VerticalStackLayout Spacing="{StaticResource Spacing8}" BindableLayout.ItemsSource="{Binding Entries}">
+          <BindableLayout.ItemTemplate>
+            <DataTemplate x:DataType="items:PrayerEntryItem">
+              <Border Style="{StaticResource ListItemCard}">
+                <Border.Triggers>
+                  <DataTrigger TargetType="Border" Binding="{Binding IsNext}" Value="True">
+                    <Setter Property="Stroke" Value="{StaticResource AccentColor}" />
+                    <Setter Property="StrokeThickness" Value="2" />
+                  </DataTrigger>
+                  <DataTrigger TargetType="Border" Binding="{Binding IsPassed}" Value="True">
+                    <Setter Property="Opacity" Value="0.55" />
+                  </DataTrigger>
+                </Border.Triggers>
+
+                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="{StaticResource Spacing12}">
+                  <Label Grid.Column="0"
+                         Style="{StaticResource Icon}"
+                         FontSize="18"
+                         Text="{StaticResource IconPrayer}" />
+                  <Label Grid.Column="1"
+                         Style="{StaticResource BodyStrong}"
+                         Text="{Binding Name}"
+                         VerticalTextAlignment="Center" />
+                  <Label Grid.Column="2"
+                         Style="{StaticResource TimeValue}"
+                         Text="{Binding Time}"
+                         VerticalTextAlignment="Center" />
+                </Grid>
+              </Border>
+            </DataTemplate>
+          </BindableLayout.ItemTemplate>
+        </VerticalStackLayout>
+
+      </VerticalStackLayout>
+    </ScrollView>
+
+  </Grid>
+
+</pages:AppPage>

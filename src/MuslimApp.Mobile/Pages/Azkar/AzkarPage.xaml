@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  A placeholder for M2. It names the milestone rather than showing an empty list, so the tab is honest about
+  what is not built yet instead of looking broken.
+-->
+<pages:AppPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:pages="clr-namespace:MuslimApp.Mobile.Pages"
+               xmlns:common="clr-namespace:MuslimApp.Mobile.Components.Common"
+               xmlns:loc="clr-namespace:MuslimApp.Mobile.Localization"
+               x:Class="MuslimApp.Mobile.Pages.Azkar.AzkarPage"
+               Title="{loc:Translate Azkar_Title}">
+
+  <common:StateMessageView Glyph="{StaticResource IconAzkar}"
+                           TitleText="{loc:Translate ComingSoon_Title}"
+                           BodyText="{loc:Translate ComingSoon_Azkar}" />
+
+</pages:AppPage>

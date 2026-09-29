@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+  <Style x:Key="PrimaryButton" TargetType="Button">
+    <Setter Property="FontFamily" Value="TajawalMedium" />
+    <Setter Property="FontSize" Value="16" />
+    <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource PrimaryColor}, Dark={StaticResource PrimaryLightColor}}" />
+    <Setter Property="TextColor" Value="{StaticResource OnPrimaryColor}" />
+    <Setter Property="CornerRadius" Value="12" />
+    <Setter Property="HeightRequest" Value="{StaticResource MinimumTouchTarget}" />
+    <Setter Property="Padding" Value="24,0" />
+    <Setter Property="VisualStateManager.VisualStateGroups">
+      <VisualStateGroupList>
+        <VisualStateGroup x:Name="CommonStates">
+          <VisualState x:Name="Normal" />
+          <VisualState x:Name="Pressed">
+            <VisualState.Setters>
+              <Setter Property="Scale" Value="0.98" />
+              <Setter Property="BackgroundColor" Value="{StaticResource PrimaryDeepColor}" />
+            </VisualState.Setters>
+          </VisualState>
+          <VisualState x:Name="Disabled">
+            <VisualState.Setters>
+              <Setter Property="Opacity" Value="0.45" />
+            </VisualState.Setters>
+          </VisualState>
+        </VisualStateGroup>
+      </VisualStateGroupList>
+    </Setter>
+  </Style>
+
+  <Style x:Key="SecondaryButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+    <Setter Property="BackgroundColor" Value="{StaticResource TransparentColor}" />
+    <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource PrimaryColor}, Dark={StaticResource PrimaryLightColor}}" />
+    <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource PrimaryColor}, Dark={StaticResource PrimaryLightColor}}" />
+    <Setter Property="BorderWidth" Value="1" />
+  </Style>
+
+  <Style x:Key="TextButton" TargetType="Button">
+    <Setter Property="FontFamily" Value="TajawalMedium" />
+    <Setter Property="FontSize" Value="16" />
+    <Setter Property="BackgroundColor" Value="{StaticResource TransparentColor}" />
+    <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource PrimaryColor}, Dark={StaticResource PrimaryLightColor}}" />
+    <Setter Property="HeightRequest" Value="{StaticResource MinimumTouchTarget}" />
+    <Setter Property="Padding" Value="12,0" />
+  </Style>
+
+  <Style x:Key="IconButton" TargetType="Button">
+    <Setter Property="FontFamily" Value="MaterialIcons" />
+    <Setter Property="FontSize" Value="22" />
+    <Setter Property="BackgroundColor" Value="{StaticResource TransparentColor}" />
+    <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightTextPrimaryColor}, Dark={StaticResource DarkTextPrimaryColor}}" />
+    <Setter Property="WidthRequest" Value="{StaticResource MinimumTouchTarget}" />
+    <Setter Property="HeightRequest" Value="{StaticResource MinimumTouchTarget}" />
+    <Setter Property="CornerRadius" Value="22" />
+    <Setter Property="Padding" Value="0" />
+  </Style>
+
+</ResourceDictionary>

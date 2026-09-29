@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  Composites and layout defaults built from the tokens.
+
+  Light and dark are handled with AppThemeBinding rather than by swapping dictionaries, so the choice is
+  driven by Application.UserAppTheme and therefore also supports following the system setting.
+-->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+  <Style x:Key="PageContent" TargetType="VerticalStackLayout">
+    <Setter Property="Spacing" Value="{StaticResource Spacing16}" />
+    <Setter Property="Padding" Value="{StaticResource PagePadding}" />
+  </Style>
+
+  <Style x:Key="SectionHeaderLabel" TargetType="Label" BasedOn="{StaticResource H3}">
+    <Setter Property="Margin" Value="0,8,0,0" />
+  </Style>
+
+  <Style x:Key="OnPrimaryLabel" TargetType="Label" BasedOn="{StaticResource BaseLabel}">
+    <Setter Property="TextColor" Value="{StaticResource OnPrimaryColor}" />
+  </Style>
+
+  <Style x:Key="OnPrimaryCaption" TargetType="Label" BasedOn="{StaticResource OnPrimaryLabel}">
+    <Setter Property="FontSize" Value="14" />
+    <Setter Property="Opacity" Value="0.85" />
+  </Style>
+
+  <Style x:Key="OnPrimaryTimeDisplay" TargetType="Label" BasedOn="{StaticResource TimeDisplay}">
+    <Setter Property="TextColor" Value="{StaticResource OnPrimaryColor}" />
+  </Style>
+
+  <Style x:Key="PassedTimeValue" TargetType="Label" BasedOn="{StaticResource TimeValue}">
+    <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightTextSecondaryColor}, Dark={StaticResource DarkTextSecondaryColor}}" />
+  </Style>
+
+  <Style x:Key="ErrorLabel" TargetType="Label" BasedOn="{StaticResource Body}">
+    <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
+    <Setter Property="HorizontalTextAlignment" Value="Center" />
+  </Style>
+
+  <Style x:Key="AccentLabel" TargetType="Label" BasedOn="{StaticResource BodyStrong}">
+    <Setter Property="TextColor" Value="{StaticResource AccentColor}" />
+  </Style>
+
+</ResourceDictionary>

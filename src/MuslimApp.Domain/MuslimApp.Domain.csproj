@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>MuslimApp.Domain</RootNamespace>
+  </PropertyGroup>
+
+  <!--
+    The domain has no package or project references, and an architecture test asserts that it stays
+    that way. No MAUI, no EF Core, no SQLite, no HTTP.
+  -->
+
+</Project>

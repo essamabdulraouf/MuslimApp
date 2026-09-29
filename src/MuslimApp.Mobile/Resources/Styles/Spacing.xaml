@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- An 8pt scale, with 4 available for tight pairings such as a label and its caption. -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:system="clr-namespace:System;assembly=netstandard">
+
+  <system:Double x:Key="Spacing4">4</system:Double>
+  <system:Double x:Key="Spacing8">8</system:Double>
+  <system:Double x:Key="Spacing12">12</system:Double>
+  <system:Double x:Key="Spacing16">16</system:Double>
+  <system:Double x:Key="Spacing24">24</system:Double>
+  <system:Double x:Key="Spacing32">32</system:Double>
+  <system:Double x:Key="Spacing48">48</system:Double>
+
+  <Thickness x:Key="PagePadding">16,16,16,16</Thickness>
+  <Thickness x:Key="CardPadding">16,16,16,16</Thickness>
+  <Thickness x:Key="ListItemPadding">16,12,16,12</Thickness>
+
+  <!--
+    The minimum interactive size. Accessibility guidance on both platforms is roughly 44pt, and every
+    tappable control in the app sets at least this.
+  -->
+  <system:Double x:Key="MinimumTouchTarget">44</system:Double>
+
+</ResourceDictionary>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  The whole navigation graph. Routes are declared here and named in Navigation.Routes, so no page contains a
+  hand-written navigation path.
+
+  Startup and onboarding sit outside the tab bar: they are linear flows, and showing tabs during them would
+  invite the user to leave before the app is configured.
+-->
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:loc="clr-namespace:MuslimApp.Mobile.Localization"
+       xmlns:pages="clr-namespace:MuslimApp.Mobile.Pages"
+       xmlns:home="clr-namespace:MuslimApp.Mobile.Pages.Home"
+       xmlns:prayer="clr-namespace:MuslimApp.Mobile.Pages.Prayer"
+       xmlns:azkar="clr-namespace:MuslimApp.Mobile.Pages.Azkar"
+       xmlns:quran="clr-namespace:MuslimApp.Mobile.Pages.Quran"
+       xmlns:qibla="clr-namespace:MuslimApp.Mobile.Pages.Qibla"
+       xmlns:more="clr-namespace:MuslimApp.Mobile.Pages.More"
+       xmlns:onboarding="clr-namespace:MuslimApp.Mobile.Pages.Onboarding"
+       x:Class="MuslimApp.Mobile.AppShell"
+       FlowDirection="{loc:FlowDirection}"
+       FlyoutBehavior="Disabled">
+
+  <ShellContent Route="startup"
+                ContentTemplate="{DataTemplate pages:StartupPage}"
+                Shell.NavBarIsVisible="False"
+                Shell.TabBarIsVisible="False" />
+
+  <ShellContent Route="onboarding"
+                ContentTemplate="{DataTemplate onboarding:OnboardingPage}"
+                Shell.NavBarIsVisible="False"
+                Shell.TabBarIsVisible="False" />
+
+  <TabBar Route="main">
+
+    <Tab Route="home" Title="{loc:Translate Tab_Home}">
+      <Tab.Icon>
+        <FontImageSource FontFamily="MaterialIcons" Glyph="{StaticResource IconHome}" />
+      </Tab.Icon>
+      <ShellContent ContentTemplate="{DataTemplate home:HomePage}" />
+    </Tab>
+
+    <Tab Route="prayer" Title="{loc:Translate Tab_Prayer}">
+      <Tab.Icon>
+        <FontImageSource FontFamily="MaterialIcons" Glyph="{StaticResource IconPrayer}" />
+      </Tab.Icon>
+      <ShellContent ContentTemplate="{DataTemplate prayer:PrayerPage}" />
+    </Tab>
+
+    <Tab Route="azkar" Title="{loc:Translate Tab_Azkar}">
+      <Tab.Icon>
+        <FontImageSource FontFamily="MaterialIcons" Glyph="{StaticResource IconAzkar}" />
+      </Tab.Icon>
+      <ShellContent ContentTemplate="{DataTemplate azkar:AzkarPage}" />
+    </Tab>
+
+    <Tab Route="quran" Title="{loc:Translate Tab_Quran}">
+      <Tab.Icon>
+        <FontImageSource FontFamily="MaterialIcons" Glyph="{StaticResource IconQuran}" />
+      </Tab.Icon>
+      <ShellContent ContentTemplate="{DataTemplate quran:QuranPage}" />
+    </Tab>
+
+    <Tab Route="qibla" Title="{loc:Translate Tab_Qibla}">
+      <Tab.Icon>
+        <FontImageSource FontFamily="MaterialIcons" Glyph="{StaticResource IconQibla}" />
+      </Tab.Icon>
+      <ShellContent ContentTemplate="{DataTemplate qibla:QiblaPage}" />
+    </Tab>
+
+    <Tab Route="more" Title="{loc:Translate Tab_More}">
+      <Tab.Icon>
+        <FontImageSource FontFamily="MaterialIcons" Glyph="{StaticResource IconMore}" />
+      </Tab.Icon>
+      <ShellContent ContentTemplate="{DataTemplate more:MorePage}" />
+    </Tab>
+
+  </TabBar>
+
+</Shell>

@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!--
+      Android and iOS only. Mac Catalyst, Windows and Tizen were removed because the product is a phone
+      application and every extra head is a platform we would be claiming to support without testing it.
+      Note that the iOS head can only be built on macOS or with a paired Mac.
+    -->
+    <TargetFrameworks>net8.0-android;net8.0-ios</TargetFrameworks>
+
+    <OutputType>Exe</OutputType>
+    <RootNamespace>MuslimApp.Mobile</RootNamespace>
+    <UseMaui>true</UseMaui>
+    <SingleProject>true</SingleProject>
+
+    <ApplicationTitle>تطبيق المسلم</ApplicationTitle>
+    <ApplicationId>com.muslimapp.app</ApplicationId>
+
+    <ApplicationDisplayVersion>1.0.0</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
+
+    <!-- Android 7.0 and iOS 13: old enough to be inclusive, new enough for modern notification APIs. -->
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">24.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">13.0</SupportedOSPlatformVersion>
+
+    <!-- Arabic is the default interface language, and English ships as a satellite assembly. -->
+    <NeutralLanguage>ar</NeutralLanguage>
+    <SatelliteResourceLanguages>ar;en</SatelliteResourceLanguages>
+
+    <!-- Reflection-based resource lookup and EF Core both need types kept, so trimming stays off. -->
+    <PublishTrimmed>false</PublishTrimmed>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#0F5132" />
+    <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#0F5132" BaseSize="128,128" />
+    <MauiImage Include="Resources\Images\*" />
+    <MauiFont Include="Resources\Fonts\*" />
+    <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MuslimApp.Application\MuslimApp.Application.csproj" />
+    <ProjectReference Include="..\MuslimApp.Domain\MuslimApp.Domain.csproj" />
+    <ProjectReference Include="..\MuslimApp.Infrastructure\MuslimApp.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

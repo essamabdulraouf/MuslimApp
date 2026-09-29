@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  Corner radii as value types only. Shape objects are deliberately not shared through resources: a Shape
+  is a visual element, and one instance cannot be attached to several borders at once.
+-->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+  <CornerRadius x:Key="Radius4">4</CornerRadius>
+  <CornerRadius x:Key="Radius8">8</CornerRadius>
+  <CornerRadius x:Key="Radius12">12</CornerRadius>
+  <CornerRadius x:Key="Radius16">16</CornerRadius>
+  <CornerRadius x:Key="Radius24">24</CornerRadius>
+
+</ResourceDictionary>

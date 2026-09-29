@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:AppPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:pages="clr-namespace:MuslimApp.Mobile.Pages"
+               xmlns:common="clr-namespace:MuslimApp.Mobile.Components.Common"
+               xmlns:loc="clr-namespace:MuslimApp.Mobile.Localization"
+               xmlns:vm="clr-namespace:MuslimApp.Mobile.ViewModels"
+               x:Class="MuslimApp.Mobile.Pages.StartupPage"
+               x:DataType="vm:StartupViewModel"
+               Shell.NavBarIsVisible="False"
+               Shell.TabBarIsVisible="False">
+
+  <Grid>
+
+    <VerticalStackLayout IsVisible="{Binding IsLoading}"
+                         Spacing="{StaticResource Spacing16}"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center">
+      <Label Style="{StaticResource H1}"
+             Text="{loc:Translate AppName}"
+             HorizontalTextAlignment="Center" />
+      <ActivityIndicator Style="{StaticResource BusyIndicator}"
+                         IsRunning="{Binding IsLoading}"
+                         HorizontalOptions="Center" />
+    </VerticalStackLayout>
+
+    <common:StateMessageView IsVisible="{Binding IsError}"
+                             Glyph="{StaticResource IconError}"
+                             TitleText="{loc:Translate State_DatabaseErrorTitle}"
+                             BodyText="{loc:Translate State_DatabaseErrorBody}"
+                             ActionText="{loc:Translate Common_Retry}"
+                             ActionCommand="{Binding RetryCommand}" />
+
+  </Grid>
+
+</pages:AppPage>
